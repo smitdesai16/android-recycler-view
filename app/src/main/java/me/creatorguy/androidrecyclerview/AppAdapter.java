@@ -14,10 +14,12 @@ public class AppAdapter extends RecyclerView.Adapter<AppViewHolder> {
 
     private List<App> apps;
     private LayoutInflater layoutInflater;
+    private Context context;
 
     public AppAdapter(Context context, List<App> apps) {
         this.apps = apps;
         this.layoutInflater = LayoutInflater.from(context);
+        this.context = context;
     }
 
     @NonNull
@@ -31,6 +33,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppViewHolder> {
     public void onBindViewHolder(@NonNull AppViewHolder holder, int position) {
         App app = apps.get(position);
         holder.setData(app, position);
+        holder.setListeners(this.context);
     }
 
     @Override
